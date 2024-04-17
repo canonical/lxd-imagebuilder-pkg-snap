@@ -1,25 +1,27 @@
-name: distrobuilder
+name: lxd-imagebuilder
 base: core22
 version: git
 grade: devel
-summary: System container and VM image builder for LXC and Incus
+summary: System container and VM image builder for LXD
 description: |-
-  Distrobuilder is a tool which lets you create container and VM images for LXC and Incus.
-license: Apache-2.0
+  LXD image builder is a tool which lets you create system container and VM images for use with LXD.
+license: AGPL-3.0
 confinement: classic
 
 apps:
-  distrobuilder:
-    command: bin/distrobuilder
+  lxd-imagebuilder:
+    command: bin/lxd-imagebuilder
+
+  simplestream-maintainer:
+    command: bin/simplestream-maintainer
 
 parts:
-  distrobuilder:
-    source: https://github.com/lxc/distrobuilder
+  lxd-imagebuilder:
+    source: https://github.com/canonical/lxd-imagebuilder
+    source-depth: 1
     source-type: git
     build-attributes:
       - enable-patchelf
-    build-packages:
-      - gcc
     build-snaps:
       - go
     plugin: go
