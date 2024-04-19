@@ -57,7 +57,7 @@ jobs:
           go install github.com/canonical/lxd-ci/lxd-snapcraft@latest
           git clone -b "${TARGET}" git+ssh://lxdbot@git.launchpad.net/~canonical-lxd/lxd-imagebuilder ~/lxd-imagebuilder-pkg-snap-lp
           # XXX: `ver` contains an array with the 2 versions
-          ver=($(lxd-snapcraft -get-version -file ~/lxd-imagebuilder-pkg-snap-lp/snapcraft.yaml))
+          ver=($(lxd-snapcraft -package lxd-imagebuilder -get-version -file ~/lxd-imagebuilder-pkg-snap-lp/snapcraft.yaml))
           rsync -a --exclude .git --delete . ~/lxd-imagebuilder-pkg-snap-lp/
           cd ~/lxd-imagebuilder-pkg-snap-lp
           lxd-snapcraft -package lxd-imagebuilder -set-version "${ver[0]}" -set-source-commit "${ver[1]}"
