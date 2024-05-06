@@ -25,3 +25,13 @@ parts:
     build-snaps:
       - go
     plugin: go
+
+  strip:
+    after: lxd-imagebuilder:
+    plugin: nil
+    override-prime: |
+      set -x
+
+      # Strip binaries
+      find "${CRAFT_PRIME}"/bin -type f \
+        -exec strip -s {} +
