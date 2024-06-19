@@ -27,7 +27,8 @@ parts:
     plugin: go
 
   strip:
-    after: lxd-imagebuilder:
+    after:
+      - lxd-imagebuilder
     plugin: nil
     override-prime: |
       set -x
