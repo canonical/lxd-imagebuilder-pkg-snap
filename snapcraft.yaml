@@ -1,5 +1,5 @@
 name: lxd-imagebuilder
-base: core22
+base: core24
 version: git
 grade: devel
 summary: System container and VM image builder for LXD
@@ -27,7 +27,8 @@ parts:
     plugin: go
 
   strip:
-    after: lxd-imagebuilder:
+    after:
+      - lxd-imagebuilder
     plugin: nil
     override-prime: |
       set -x
