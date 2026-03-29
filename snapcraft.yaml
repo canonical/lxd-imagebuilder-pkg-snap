@@ -1,5 +1,6 @@
 name: lxd-imagebuilder
-base: core24
+base: bare
+build-base: devel
 version: git
 grade: devel
 summary: System container and VM image builder for LXD
@@ -20,8 +21,6 @@ parts:
     source: https://github.com/canonical/lxd-imagebuilder
     source-depth: 1
     source-type: git
-    build-attributes:
-      - enable-patchelf
     build-snaps:
       - go
     plugin: go
