@@ -35,3 +35,7 @@ parts:
       # Strip binaries
       find "${CRAFT_PRIME}"/bin -type f \
         -exec strip -s {} +
+
+lint:
+  ignore:
+    - library  # classic snaps don't need to bundle any library as they use the host's libraries
