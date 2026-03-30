@@ -23,7 +23,15 @@ parts:
     source-type: git
     build-snaps:
       - go
+    build-packages:
+      - libc6-dev
     plugin: go
+    build-environment:
+      # Statically link libc so the binary is portable across glibc versions.
+      # CGO is required (main.go uses import "C" for a pre-runtime namespace
+      # unshare), so `CGO_ENABLED=0`` is not an option; statically linking is
+      # used instead to avoid a runtime dependency on the host's libc.so.6.
+      - GOFLAGS: "-ldflags=-extldflags=-static"
 
   strip:
     after:
